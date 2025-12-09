@@ -572,7 +572,7 @@ Each study will contain a collection of "links":
 
 ### URL Parameters
 
-Parameter | Description | Requiered
+Parameter | Description | Required
 --------- | ----------- | ---------
 status | Filter by status: PERFORMED, READ, TYPED, APPROVED, DISCONTINUED, ARCHIVED (case insensitive) | No
 patientID | Filter by Patient ID | No
