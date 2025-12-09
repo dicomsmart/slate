@@ -200,27 +200,27 @@ assignedRadiologist | Administrative ID of an existing Radiologist | No, but, if
 department | Administrative ID of Department | Yes, if the token used is restricted to a Department this ID has to match it
 code | Administrative ID of the requested procedure. It has to match an existing and active procedure | Yes
 laterality | Laterality information, R_LAT or L_LAT | No
-placerOrderNumber | This number must uniquely identify this particular requested study. | Yes
-comments | The Comments attribute is intended to transmit non-structured information, which can be displayed to the operator of the Modality. | No
+placerOrderNumber | This number must uniquely identify this particular requested study | Yes
+comments | The Comments attribute is intended to transmit non-structured information, which can be displayed to the operator of the Modality | No
 price | Format ####.## | No
-patientId | Patient ID. | No
-otherId | Alternative Patient ID. | No
-givenName | Patient Name. | Yes
-familyName | Patient Last Name. | Yes
-birthdate | Patient Birthdate, format yyyyMMdd. | Yes
-email | Patient email address. Make sure it is a valid email address. | No
-phone | Patient phone number. | No
-address | Patient Address. | No
-sex | Possible Values F, M or O. | No, defaults to F
-controlNumber | A number used to group similar worklist items, like requested studies belonging to the same patient's visit. | No
+patientId | Patient ID | No
+otherId | Alternative Patient ID | No
+givenName | Patient Name | Yes
+familyName | Patient Last Name | Yes
+birthdate | Patient Birthdate, format yyyyMMdd | Yes
+email | Patient email address. Make sure it is a valid email address | No
+phone | Patient phone number | No
+address | Patient Address | No
+sex | Possible Values F, M or O | No, defaults to F
+controlNumber | A number used to group similar worklist items, like requested studies belonging to the same patient's visit | No
 
 ### Errors
 
 Code | Meaning
 ---- | -------
-401 Unauthorized | Invalid token or secret. This could also be returned if the used token is limited to one Department and the worklist entry being created belongs to a different one.
-400 Bad Request | Unable to process the request, probably due to some validation error. The message will contain more information.
-422 Unprocessable Entity | This will be returned if an existing worklist entry or study already has that placer order number.
+401 Unauthorized | Invalid token or secret. This could also be returned if the used token is limited to one Department and the worklist entry being created belongs to a different one
+400 Bad Request | Unable to process the request, probably due to some validation error. The message will contain more information
+422 Unprocessable Entity | This will be returned if an existing worklist entry or study already has that placer order number
 
 
 ## Discontinuing
@@ -257,9 +257,9 @@ discontinueReason | Short explanation about the discontinuation reasons
 
 Code | Meaning
 ---- | -------
-401 Unauthorized | Invalid token or secret. This could also be returned if the used token is limited to one Department and the worklist entry being discontinued belongs to a different one.
-404 Resource Not Found | No worklist entry matches the placerOrderNumber.
-422 Unprocessable Entity | The Worklist item can’t be discontinued. It is already discontinued or has been processed.
+401 Unauthorized | Invalid token or secret. This could also be returned if the used token is limited to one Department and the worklist entry being discontinued belongs to a different one
+404 Resource Not Found | No worklist entry matches the placerOrderNumber
+422 Unprocessable Entity | The Worklist item can’t be discontinued. It is already discontinued or has been processed
 
 
 # Imaging Service Requests
@@ -391,47 +391,47 @@ The creation will work if at least one of the *code* values for the received req
 #### Imaging Service Rquest
 Field | Information | Required
 ----- | ----------- | --------
-controlNumber | Identification number of the imaging service request. This field becomes the Control Number of each requested study. This value must unequivocally identify a single imaging service request and can not be repeated. | Yes
-date | Date of the request, format yyyyMMdd. | No, if no date is provided, the current date is used.
-time | Time of the request, format HHmmss. | No, if no time is provided, the current time is used.
-prediag | Reason for Visit. | No
+controlNumber | Identification number of the imaging service request. This field becomes the Control Number of each requested study. This value must unequivocally identify a single imaging service request and can not be repeated | Yes
+date | Date of the request, format yyyyMMdd | No, if no date is provided, the current date is used
+time | Time of the request, format HHmmss | No, if no time is provided, the current time is used
+prediag | Reason for Visit | No
 custom1 | Custom field, to be used freely | No
-priority | Possible values STAT,HIGH,ROUTINE,MEDIUM,LOW. | No, ROUTINE is the default value
-ptype | Administrative ID of the Patient Type, if the administrative ID that is provided does not match an existing Type of Patient, the value is ignored. | No
-ref | Administrative ID of an existing Referring Physician. | No, but, if present, must be from a valid user from the Department.
-department | Administrative ID of Department. | Yes. Must be a valid department ID
+priority | Possible values STAT,HIGH,ROUTINE,MEDIUM,LOW | No, ROUTINE is the default value
+ptype | Administrative ID of the Patient Type, if the administrative ID that is provided does not match an existing Type of Patient, the value is ignored | No
+ref | Administrative ID of an existing Referring Physician | No, but, if present, must be from a valid user from the Department
+department | Administrative ID of Department | Yes. Must be a valid department ID
 
 #### Patient
 Field | Information | Required
 ----- | ----------- | --------
-patientId | Patient ID. | Yes
-otherId | Alternative Patient ID. | No
-givenName | Patient Name. | Yes
-familyName | Patient Last Name. | Yes
-birthdate | Patient Birthdate, format yyyyMMdd. | Yes
-email | Patient email address. Make sure it is a valid email address. | No
-phone | Patient phone number. | No
-address | Patient Address. | No
-sex | Possible Values F, M or O. | No, defaults to O
+patientId | Patient ID | Yes
+otherId | Alternative Patient ID | No
+givenName | Patient Name | Yes
+familyName | Patient Last Name | Yes
+birthdate | Patient Birthdate, format yyyyMMdd | Yes
+email | Patient email address. Make sure it is a valid email address | No
+phone | Patient phone number | No
+address | Patient Address | No
+sex | Possible Values F, M or O | No, defaults to O
 
 
 #### Requested Study
 Field | Information | Required
 ----- | ----------- | --------
-code | Administrative ID of the requested procedure. At least of the provided codes must be from valid and active procedures. | Yes
-placerOrderNumber | This value must uniquely identify this particular requested study, not just inside the imaging service request but globally. | Yes
+code | Administrative ID of the requested procedure. At least of the provided codes must be from valid and active procedures | Yes
+placerOrderNumber | This value must uniquely identify this particular requested study, not just inside the imaging service request but globally | Yes
 price | Format ####.## | No
-assignedRadiologist | Administrative ID of an existing Radiologist. | No, but, if present, must be from a valid user that belongs to the Department.
-externalPortalAccessCode | Access code provided to the patient used to locate what’s going to be the resulting study through the portal. | No, must be unique if provided
-comments | The Comments attribute is intended to transmit non-structured information, which can be displayed to the operator of the Modality. | No
+assignedRadiologist | Administrative ID of an existing Radiologist | No, but, if present, must be from a valid user that belongs to the Department.
+externalPortalAccessCode | Access code provided to the patient used to locate what’s going to be the resulting study through the portal | No, must be unique if provided
+comments | The Comments attribute is intended to transmit non-structured information, which can be displayed to the operator of the Modality | No
 
 ### Errors
 
 Code | Meaning
 ---- | -------
-401 Unauthorized | Invalid token or secret. This could also be returned if the used token is limited to one Department and the Imaging Service Request being created belongs to a different one.
-400 Bad Request | Unable to process the request, probably due to some validation error. The message will contain more information.
-422 Unprocessable Entity | This will be returned if at least one of the requested studies is using a repeated Order Placer Number or if another Imaging Service Request already exists with the given control number.
+401 Unauthorized | Invalid token or secret. This could also be returned if the used token is limited to one Department and the Imaging Service Request being created belongs to a different one
+400 Bad Request | Unable to process the request, probably due to some validation error. The message will contain more information
+422 Unprocessable Entity | This will be returned if at least one of the requested studies is using a repeated Order Placer Number or if another Imaging Service Request already exists with the given control number
 
 ## Deleting
 
@@ -462,16 +462,16 @@ Use the control number to delete any unprocessed Imaging Service Request. You ca
 
 Parameter | Description
 --------- | -----------
-Control Number | The number that uniquely identifies this imaging service request.
+Control Number | The number that uniquely identifies this imaging service request
 
 ### Errors
 
 Code | Meaning
 ---- | -------
-401 Unauthorized | Invalid token or secret. This could also be returned if the used token is limited to one Department and the Imaging Service Request being deleted belongs to a different one.
-400 Bad Request | Unable to process the request, probably due to some validation error. The message will contain more information.
-404 Resource Not Found | No Imaging Service Request matches the Control Number.
-422 Unprocessable Entity | The Imaging Service Request has already been processed and can’t be deleted.
+401 Unauthorized | Invalid token or secret. This could also be returned if the used token is limited to one Department and the Imaging Service Request being deleted belongs to a different one
+400 Bad Request | Unable to process the request, probably due to some validation error. The message will contain more information
+404 Resource Not Found | No Imaging Service Request matches the Control Number
+422 Unprocessable Entity | The Imaging Service Request has already been processed and can’t be deleted
 
 # Studies
 
@@ -561,7 +561,7 @@ Use this enpoint to list all existing studies. You can filter the results by sta
 Each study will contain a collection of "links":
 
 * A “report” URL to fetch the Report. This will only be added to APPROVED studies. Consult the [Reports](#reports) sections for additional options to retrieve the report.
-* A "viewer" URL for the study results page. A "token" parameter will be added to the URL if an endpoint is provided to dicomfix to generate valid security tokens. Please refer to the External Token section.
+* A "viewer" URL for the study results page. A "token" parameter will be added to the URL if an endpoint is provided to dicomfix to generate valid security tokens.
 
 
 ### HTTP Request
@@ -576,7 +576,7 @@ Parameter | Description | Required
 --------- | ----------- | ---------
 status | Filter by status: PERFORMED, READ, TYPED, APPROVED, DISCONTINUED, ARCHIVED (case insensitive) | No
 patientID | Filter by Patient ID | No
-pageNumber | Request this particular page | No, defaults to 1 if not provided.
+pageNumber | Request this particular page | No, defaults to 1 if not provided
 
 
 # Reports
@@ -606,17 +606,17 @@ This endpoint will only return reports from **APPROVED** studies and will always
 
 Parameter | Description | Required
 --------- | ----------- | ---------
-study id | The database id of the study, consult the [Study](#studies) section to list studies and get their ids. | Yes
-base64 | If true, the PDF report will be returned as a base64 String. | No, defaults to false.
-includeImages | If true, the report will include the first 30 images from the Study.  | No, defaults to false.
-columns | Columns for the layout of the included images, possible values: 1,2,3,4,5  Any value over 5 defaults to 5. | Only if includeImages if true.
-plainText | If true, a plain text representation of the report is returned and all other parameters are ignored. | No, defaults to false.
+study id | The database id of the study, consult the [Study](#studies) section to list studies and get their ids | Yes
+base64 | If true, the PDF report will be returned as a base64 String | No, defaults to false
+includeImages | If true, the report will include the first 30 images from the Study.  | No, defaults to false
+columns | Columns for the layout of the included images, possible values: 1,2,3,4,5  Any value over 5 defaults to 5 | Only if includeImages if true
+plainText | If true, a plain text representation of the report is returned and all other parameters are ignored | No, defaults to false
 
 ### Errors
 
 Code | Meaning
 ---- | -------
-401 Unauthorized | Invalid token or secret. This could also be returned if the used token is limited to one Department and the report is from a study that belongs to another Department.
-400 Bad Request | Unable to process the request, probably due to some validation error. The message will contain more information.
+401 Unauthorized | Invalid token or secret. This could also be returned if the used token is limited to one Department and the report is from a study that belongs to another Department
+400 Bad Request | Unable to process the request, probably due to some validation error. The message will contain more information
 
 
